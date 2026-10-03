@@ -2,10 +2,10 @@ import { buildMockTrip } from "@/data/mockTrip";
 import { TripApiError, type TripRequest, type TripResponse } from "@/types/trip";
 
 /** Base URL for the Django REST backend. Empty = same origin. */
-export const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+export const API_URL = (import.meta.env['VITE_API_URL'] as string | undefined) ?? "";
 
 /** Toggle to switch from mock data to the real backend. */
-const USE_MOCK = !import.meta.env.VITE_API_URL;
+const USE_MOCK = !import.meta.env['VITE_API_URL'];
 
 export async function calculateTrip(data: TripRequest): Promise<TripResponse> {
   if (USE_MOCK) {
