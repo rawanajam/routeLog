@@ -39,7 +39,7 @@ export function LoadingState() {
   );
 }
 
-export function ErrorState({ message, onRetry }: { message: string; onRetry?: () => void }) {
+export function ErrorState({ message, onRetry }: { message: string; onRetry?: (() => void) | undefined }) {
   return (
     <div role="alert" className="panel flex flex-col items-start gap-4 border-destructive/30 p-5 sm:flex-row sm:items-center">
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-destructive/10 text-destructive">

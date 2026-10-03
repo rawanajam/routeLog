@@ -91,7 +91,7 @@ export interface TripResponse {
 }
 
 export class TripApiError extends Error {
-  field?: keyof TripRequest;
+  field?: keyof TripRequest | undefined;
   constructor(message: string, field?: keyof TripRequest) {
     super(message);
     this.name = "TripApiError";

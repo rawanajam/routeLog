@@ -7,8 +7,8 @@ type Errors = Partial<Record<keyof TripRequest, string>>;
 
 interface Props {
   onSubmit: (data: TripRequest) => void;
-  loading?: boolean;
-  serverErrors?: Errors;
+  loading?: boolean | undefined;
+  serverErrors?: Errors | undefined;
 }
 
 function Field({
@@ -23,7 +23,7 @@ function Field({
   id: string;
   label: string;
   icon: ReactNode;
-  error?: string;
+  error?: string | undefined;
   helper?: string;
   suffix?: string;
   children: ReactNode;
