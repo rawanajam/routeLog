@@ -12,7 +12,7 @@ export function PlannedStops({ stops }: { stops: TripStop[] }) {
         {stops.map((s, i) => {
           const Icon = stopIcon[s.type];
           return (
-            <li key={s.id} className="grid grid-cols-[auto_1fr] gap-4 px-5 py-4 md:grid-cols-[auto_1.4fr_1fr_1fr_auto] md:items-center">
+            <li key={s.id} className="grid grid-cols-[auto_1fr] gap-4 px-5 py-4 md:grid-cols-[4rem_minmax(0,1fr)_14rem_6rem_8rem] md:items-center">
               <div className="flex items-center gap-3">
                 <span className="w-5 text-right font-mono text-xs text-muted-foreground">{i + 1}</span>
                 <span className={`grid h-9 w-9 place-items-center rounded-lg ${stopColor[s.type]} text-primary-foreground`}>
@@ -34,7 +34,7 @@ export function PlannedStops({ stops }: { stops: TripStop[] }) {
                 <p className="text-muted-foreground">Duration</p>
                 <p className="font-mono">{s.duration_hours ? formatHours(s.duration_hours) : "—"}</p>
               </div>
-              <span className="col-start-2 w-fit rounded-full border border-border bg-secondary px-2.5 py-1 text-xs font-medium md:col-start-auto">
+              <span className="col-start-2 w-fit rounded-full border border-border bg-secondary px-2.5 py-1 text-xs font-medium md:col-start-auto md:justify-self-end">
                 {dutyLabel[s.duty_status]}
               </span>
             </li>

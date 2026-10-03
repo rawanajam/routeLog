@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Frontend only: all trip data comes from `src/services/api.ts` (mock until `VITE_API_URL` points at the Django backend) — UI must never compute HOS rules.
+- Leaflet map is lazy-loaded behind ClientOnly — leaflet touches `window` at import.

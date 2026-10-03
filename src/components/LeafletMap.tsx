@@ -19,8 +19,8 @@ export default function LeafletMap({ route, stops }: { route: LatLng[]; stops: T
   return (
     <MapContainer bounds={bounds} boundsOptions={{ padding: [30, 30] }} scrollWheelZoom={false} className="absolute inset-0 h-full w-full">
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
-        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> '
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Polyline positions={route} pathOptions={{ color: "oklch(0.23 0.045 258)", weight: 4, opacity: 0.85 }} />
       {stops.map((s) => (
