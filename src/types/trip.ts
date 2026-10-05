@@ -15,10 +15,22 @@ export type TimelineKind =
 /** [latitude, longitude] */
 export type LatLng = [number, number];
 
+export interface LocationValue {
+  name: string;
+  /** Null until selected or resolved; manual typing remains supported. */
+  lat: number | null;
+  lng: number | null;
+}
+
+export interface ResolvedLocation extends LocationValue {
+  lat: number;
+  lng: number;
+}
+
 export interface TripRequest {
-  current_location: string;
-  pickup_location: string;
-  dropoff_location: string;
+  current_location: LocationValue;
+  pickup_location: LocationValue;
+  dropoff_location: LocationValue;
   current_cycle_used: number;
 }
 
@@ -41,6 +53,7 @@ export interface TripEvent {
   kind: TimelineKind;
   duration_hours?: number;
   location?: string;
+  distance_miles?: number;
 }
 
 /** A segment on the 24h ELD grid. Hours are 0–24 within the log day. */

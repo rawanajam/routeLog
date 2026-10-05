@@ -15,6 +15,7 @@ export function ComplianceSummary({ compliance }: { compliance: ComplianceResult
           {compliance.compliant ? "Compliant" : "Issues found"}
         </span>
       </div>
+      <p className="px-5 py-3 text-xs text-muted-foreground">Checks apply to this planned schedule, assuming an initial 10-hour rest. Previous daily duty records are unavailable; cycle recapture is not assumed.</p>
       <ul className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
         {compliance.items.map((c) => (
           <li key={c.id} className="flex gap-3 bg-card p-4">

@@ -1,10 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
-import { calculateTrip } from "@/services/api";
-import { sampleTripRequest } from "@/data/mockTrip";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useLatestTrip } from "@/services/latestTrip";
 import { DriverLogs } from "@/components/DriverLogs";
-import { ErrorState } from "@/components/States";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export const Route = createFileRoute("/logs")({
   head: () => ({
@@ -19,21 +15,21 @@ export const Route = createFileRoute("/logs")({
 });
 
 function LogsPage() {
-  const q = useQuery({ queryKey: ["trip", sampleTripRequest], queryFn: () => calculateTrip(sampleTripRequest) });
+  const trip = useLatestTrip();
   return (
     <main className="mx-auto max-w-7xl space-y-6 px-4 py-8 sm:px-6">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Driver Logs</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Sample log sheets for {sampleTripRequest.pickup_location} → {sampleTripRequest.dropoff_location}.
+          {trip ? `Daily log sheets for ${trip.logs[0]?.from ?? "your trip"} → ${trip.logs[0]?.to ?? "your destination"}.`
+            : "Daily log sheets from your latest calculated trip."}
         </p>
       </div>
-      {q.isPending ? (
-        <Skeleton className="h-96 rounded-xl" />
-      ) : q.error ? (
-        <ErrorState message={q.error.message} onRetry={() => q.refetch()} />
-      ) : (
-        <DriverLogs logs={q.data.logs} />
+      {trip ? <DriverLogs logs={trip.logs} /> : (
+        <div className="panel space-y-3 p-6">
+          <p className="text-sm text-muted-foreground">Calculate a trip in the Trip Planner to see its daily logs here.</p>
+          <Link to="/" className="inline-flex rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">Open Trip Planner</Link>
+        </div>
       )}
     </main>
   );

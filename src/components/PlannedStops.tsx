@@ -27,7 +27,7 @@ export function PlannedStops({ stops }: { stops: TripStop[] }) {
               <div className="col-start-2 text-xs md:col-start-auto">
                 <p className="text-muted-foreground">Arrive → Depart</p>
                 <p className="font-mono">
-                  {formatDate(s.arrival)} {formatTime(s.arrival)} → {formatTime(s.departure)}
+                  {formatDate(s.arrival)} {formatTime(s.arrival)} → {s.arrival.slice(0, 10) !== s.departure.slice(0, 10) ? `${formatDate(s.departure)} ` : ""}{formatTime(s.departure)}
                 </p>
               </div>
               <div className="col-start-2 text-xs md:col-start-auto">

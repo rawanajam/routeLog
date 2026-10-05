@@ -1,0 +1,231 @@
+{
+  "checked_at_utc": "2026-10-04T20:10:11.352875+00:00",
+  "cases": [
+    {
+      "case": "Dallas\u2013Houston\u2013Miami",
+      "distance_miles": 1425.34,
+      "driving_hours": 26.0085,
+      "total_trip_hours": 48.50849890083333,
+      "calendar_logs": 3,
+      "remaining_cycle_hours": 21.491501099036178,
+      "stops": [
+        {
+          "type": "start",
+          "location": "Dallas, TX",
+          "duration_hours": 0
+        },
+        {
+          "type": "pickup",
+          "location": "Houston, TX",
+          "duration_hours": 1
+        },
+        {
+          "type": "rest",
+          "location": "Near Hancock County, Mississippi",
+          "duration_hours": 10
+        },
+        {
+          "type": "fuel",
+          "location": "Near Madison County, Florida",
+          "duration_hours": 0.5
+        },
+        {
+          "type": "rest",
+          "location": "Near Taft, Florida",
+          "duration_hours": 10
+        },
+        {
+          "type": "dropoff",
+          "location": "Miami, FL",
+          "duration_hours": 1
+        }
+      ],
+      "all_calendar_days_24_hours": true,
+      "compliance": {
+        "compliant": true,
+        "items": [
+          {
+            "id": "c1",
+            "rule": "11-hour driving limit",
+            "detail": "Maximum 11.00 h; limit 11 h",
+            "passed": true
+          },
+          {
+            "id": "c2",
+            "rule": "14-hour driving window",
+            "detail": "Maximum 12.00 h; limit 14 h",
+            "passed": true
+          },
+          {
+            "id": "c3",
+            "rule": "Driving between qualifying interruptions",
+            "detail": "Maximum 7.24 h; limit 8 h",
+            "passed": true
+          },
+          {
+            "id": "c4",
+            "rule": "70-hour cycle while driving",
+            "detail": "Maximum 47.51 h; limit 70 h",
+            "passed": true
+          },
+          {
+            "id": "c5",
+            "rule": "Fuel at least every 1,000 miles",
+            "detail": "Maximum 1000.00 mi; limit 1000 mi",
+            "passed": true
+          },
+          {
+            "id": "c6",
+            "rule": "Rest and schedule continuity",
+            "detail": "Initial 10-hour rest assumed; only 10h off duty resets a shift and 34h resets the cycle",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "case": "Chicago\u2013Indianapolis\u2013Nashville, nearly exhausted cycle",
+      "distance_miles": 468.26,
+      "driving_hours": 8.945,
+      "total_trip_hours": 44.945,
+      "calendar_logs": 3,
+      "remaining_cycle_hours": 60.055,
+      "stops": [
+        {
+          "type": "start",
+          "location": "Chicago, IL",
+          "duration_hours": 0
+        },
+        {
+          "type": "rest",
+          "location": "Near Eagle Creek Township, Indiana",
+          "duration_hours": 34
+        },
+        {
+          "type": "pickup",
+          "location": "Indianapolis, IN",
+          "duration_hours": 1
+        },
+        {
+          "type": "dropoff",
+          "location": "Nashville, TN",
+          "duration_hours": 1
+        }
+      ],
+      "all_calendar_days_24_hours": true,
+      "compliance": {
+        "compliant": true,
+        "items": [
+          {
+            "id": "c1",
+            "rule": "11-hour driving limit",
+            "detail": "Maximum 7.95 h; limit 11 h",
+            "passed": true
+          },
+          {
+            "id": "c2",
+            "rule": "14-hour driving window",
+            "detail": "Maximum 8.95 h; limit 14 h",
+            "passed": true
+          },
+          {
+            "id": "c3",
+            "rule": "Driving between qualifying interruptions",
+            "detail": "Maximum 5.33 h; limit 8 h",
+            "passed": true
+          },
+          {
+            "id": "c4",
+            "rule": "70-hour cycle while driving",
+            "detail": "Maximum 70.00 h; limit 70 h",
+            "passed": true
+          },
+          {
+            "id": "c5",
+            "rule": "Fuel at least every 1,000 miles",
+            "detail": "Maximum 468.26 mi; limit 1000 mi",
+            "passed": true
+          },
+          {
+            "id": "c6",
+            "rule": "Rest and schedule continuity",
+            "detail": "Initial 10-hour rest assumed; only 10h off duty resets a shift and 34h resets the cycle",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "case": "Los Angeles\u2013Phoenix\u2013Las Vegas",
+      "distance_miles": 658.8,
+      "driving_hours": 12.7795,
+      "total_trip_hours": 24.779530879722223,
+      "calendar_logs": 2,
+      "remaining_cycle_hours": 55.22046912033723,
+      "stops": [
+        {
+          "type": "start",
+          "location": "Los Angeles, CA",
+          "duration_hours": 0
+        },
+        {
+          "type": "pickup",
+          "location": "Phoenix, AZ",
+          "duration_hours": 1
+        },
+        {
+          "type": "rest",
+          "location": "Near Mohave County, Arizona",
+          "duration_hours": 10
+        },
+        {
+          "type": "dropoff",
+          "location": "Las Vegas, NV",
+          "duration_hours": 1
+        }
+      ],
+      "all_calendar_days_24_hours": true,
+      "compliance": {
+        "compliant": true,
+        "items": [
+          {
+            "id": "c1",
+            "rule": "11-hour driving limit",
+            "detail": "Maximum 11.00 h; limit 11 h",
+            "passed": true
+          },
+          {
+            "id": "c2",
+            "rule": "14-hour driving window",
+            "detail": "Maximum 12.00 h; limit 14 h",
+            "passed": true
+          },
+          {
+            "id": "c3",
+            "rule": "Driving between qualifying interruptions",
+            "detail": "Maximum 6.78 h; limit 8 h",
+            "passed": true
+          },
+          {
+            "id": "c4",
+            "rule": "70-hour cycle while driving",
+            "detail": "Maximum 13.78 h; limit 70 h",
+            "passed": true
+          },
+          {
+            "id": "c5",
+            "rule": "Fuel at least every 1,000 miles",
+            "detail": "Maximum 658.80 mi; limit 1000 mi",
+            "passed": true
+          },
+          {
+            "id": "c6",
+            "rule": "Rest and schedule continuity",
+            "detail": "Initial 10-hour rest assumed; only 10h off duty resets a shift and 34h resets the cycle",
+            "passed": true
+          }
+        ]
+      }
+    }
+  ]
+}

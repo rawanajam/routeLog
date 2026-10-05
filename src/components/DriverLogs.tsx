@@ -8,24 +8,25 @@ const ORDER: DutyStatus[] = ["off_duty", "sleeper_berth", "driving", "on_duty"];
 
 export function DriverLogs({ logs }: { logs: DailyLog[] }) {
   const [active, setActive] = useState(0);
-  const log = logs[active];
+  const selected = Math.min(active, Math.max(0, logs.length - 1));
+  const log = logs[selected];
   if (!log) return null;
   const total = ORDER.reduce((s, k) => s + log.totals[k], 0);
 
   return (
     <section className="panel">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3.5">
-        <h2 className="font-semibold">Driver Daily Logs</h2>
+        <h2 className="font-semibold">Driver Daily Logs (UTC)</h2>
         <div role="tablist" className="inline-flex rounded-lg bg-secondary p-1">
           {logs.map((l, i) => (
             <button
               key={l.day}
               role="tab"
-              aria-selected={i === active}
+              aria-selected={i === selected}
               onClick={() => setActive(i)}
               className={cn(
                 "rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors",
-                i === active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground",
+                i === selected ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground",
               )}
             >
               Day {l.day}

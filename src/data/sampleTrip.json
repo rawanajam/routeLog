@@ -1,0 +1,451 @@
+{
+  "distance_miles": 1540,
+  "driving_hours": 28.0,
+  "total_trip_hours": 50.5,
+  "remaining_cycle_hours": 19.5,
+  "driving_days": 3,
+  "route": [
+    [
+      32.7767,
+      -96.797
+    ],
+    [
+      31.55,
+      -96.2
+    ],
+    [
+      30.6,
+      -95.75
+    ],
+    [
+      29.7604,
+      -95.3698
+    ],
+    [
+      30.05,
+      -94.1
+    ],
+    [
+      30.2241,
+      -92.0198
+    ],
+    [
+      30.4515,
+      -91.1871
+    ],
+    [
+      30.42,
+      -89.9
+    ],
+    [
+      30.6954,
+      -88.0399
+    ],
+    [
+      30.47,
+      -87.2
+    ],
+    [
+      30.4383,
+      -84.2807
+    ],
+    [
+      29.95,
+      -82.6
+    ],
+    [
+      29.1872,
+      -82.1401
+    ],
+    [
+      28.0,
+      -81.3
+    ],
+    [
+      26.7153,
+      -80.0534
+    ],
+    [
+      25.7617,
+      -80.1918
+    ]
+  ],
+  "stops": [
+    {
+      "id": "s1",
+      "type": "start",
+      "location": "Dallas, TX",
+      "coordinates": [
+        32.7767,
+        -96.797
+      ],
+      "arrival": "2026-10-05T06:00:00+00:00",
+      "departure": "2026-10-05T06:00:00+00:00",
+      "duration_hours": 0,
+      "duty_status": "on_duty",
+      "description": "Trip starts after an assumed 10-hour rest"
+    },
+    {
+      "id": "s2",
+      "type": "pickup",
+      "location": "Houston, TX",
+      "coordinates": [
+        29.7604,
+        -95.3698
+      ],
+      "arrival": "2026-10-05T10:21:49.090909+00:00",
+      "departure": "2026-10-05T11:21:49.090909+00:00",
+      "duration_hours": 1,
+      "duty_status": "on_duty",
+      "description": "Pickup freight"
+    },
+    {
+      "id": "s3",
+      "type": "rest",
+      "location": "Along the planned route",
+      "coordinates": [
+        30.42774234379878,
+        -90.21635462550505
+      ],
+      "arrival": "2026-10-05T18:00:00+00:00",
+      "departure": "2026-10-06T04:00:00+00:00",
+      "duration_hours": 10,
+      "duty_status": "off_duty",
+      "description": "10-hour off-duty rest"
+    },
+    {
+      "id": "s4",
+      "type": "fuel",
+      "location": "Along the planned route",
+      "coordinates": [
+        30.44160854021852,
+        -84.5853883741302
+      ],
+      "arrival": "2026-10-06T11:10:54.545455+00:00",
+      "departure": "2026-10-06T11:40:54.545455+00:00",
+      "duration_hours": 0.5,
+      "duty_status": "on_duty",
+      "description": "Planned refueling (approximate route location)"
+    },
+    {
+      "id": "s5",
+      "type": "rest",
+      "location": "Along the planned route",
+      "coordinates": [
+        29.228271147329856,
+        -82.16486221900499
+      ],
+      "arrival": "2026-10-06T15:30:00+00:00",
+      "departure": "2026-10-07T01:30:00+00:00",
+      "duration_hours": 10,
+      "duty_status": "off_duty",
+      "description": "10-hour off-duty rest"
+    },
+    {
+      "id": "s6",
+      "type": "dropoff",
+      "location": "Miami, FL",
+      "coordinates": [
+        25.7617,
+        -80.1918
+      ],
+      "arrival": "2026-10-07T07:30:00+00:00",
+      "departure": "2026-10-07T08:30:00+00:00",
+      "duration_hours": 1,
+      "duty_status": "on_duty",
+      "description": "Deliver freight"
+    }
+  ],
+  "events": [
+    {
+      "id": "e1",
+      "time": "2026-10-05T06:00:00+00:00",
+      "title": "Trip starts after an assumed 10-hour rest",
+      "kind": "on_duty",
+      "duration_hours": 0,
+      "location": "Dallas, TX"
+    },
+    {
+      "id": "e2",
+      "time": "2026-10-05T06:00:00+00:00",
+      "title": "Driving",
+      "kind": "driving",
+      "duration_hours": 4.363636363636363,
+      "location": "Dallas, TX",
+      "distance_miles": 240.0
+    },
+    {
+      "id": "e3",
+      "time": "2026-10-05T10:21:49.090909+00:00",
+      "title": "Pickup freight",
+      "kind": "pickup",
+      "duration_hours": 1,
+      "location": "Houston, TX"
+    },
+    {
+      "id": "e4",
+      "time": "2026-10-05T11:21:49.090909+00:00",
+      "title": "Driving",
+      "kind": "driving",
+      "duration_hours": 6.636363636363637,
+      "location": "Houston, TX",
+      "distance_miles": 365.0
+    },
+    {
+      "id": "e5",
+      "time": "2026-10-05T18:00:00+00:00",
+      "title": "10-hour off-duty rest",
+      "kind": "off_duty",
+      "duration_hours": 10,
+      "location": "Along the planned route"
+    },
+    {
+      "id": "e6",
+      "time": "2026-10-06T04:00:00+00:00",
+      "title": "Driving",
+      "kind": "driving",
+      "duration_hours": 7.181818181818182,
+      "location": "Along the planned route",
+      "distance_miles": 395.0
+    },
+    {
+      "id": "e7",
+      "time": "2026-10-06T11:10:54.545455+00:00",
+      "title": "Planned refueling (approximate route location)",
+      "kind": "fuel",
+      "duration_hours": 0.5,
+      "location": "Along the planned route"
+    },
+    {
+      "id": "e8",
+      "time": "2026-10-06T11:40:54.545455+00:00",
+      "title": "Driving",
+      "kind": "driving",
+      "duration_hours": 3.8181818181818183,
+      "location": "Along the planned route",
+      "distance_miles": 210.0
+    },
+    {
+      "id": "e9",
+      "time": "2026-10-06T15:30:00+00:00",
+      "title": "10-hour off-duty rest",
+      "kind": "off_duty",
+      "duration_hours": 10,
+      "location": "Along the planned route"
+    },
+    {
+      "id": "e10",
+      "time": "2026-10-07T01:30:00+00:00",
+      "title": "Driving",
+      "kind": "driving",
+      "duration_hours": 6.0,
+      "location": "Along the planned route",
+      "distance_miles": 330.0
+    },
+    {
+      "id": "e11",
+      "time": "2026-10-07T07:30:00+00:00",
+      "title": "Deliver freight",
+      "kind": "dropoff",
+      "duration_hours": 1,
+      "location": "Miami, FL"
+    }
+  ],
+  "logs": [
+    {
+      "day": 1,
+      "date": "2026-10-05",
+      "total_miles": 605.0,
+      "truck_number": "Not provided",
+      "trailer_number": "Not provided",
+      "carrier": "Not provided",
+      "from": "Dallas, TX",
+      "to": "Miami, FL",
+      "remarks": [
+        "06:00 Driving",
+        "10:21 Pickup freight",
+        "11:21 Driving",
+        "18:00 10-hour off-duty rest"
+      ],
+      "segments": [
+        {
+          "status": "off_duty",
+          "start_hour": 0.0,
+          "end_hour": 6.0,
+          "note": ""
+        },
+        {
+          "status": "driving",
+          "start_hour": 6.0,
+          "end_hour": 10.36363636361111,
+          "note": "Driving"
+        },
+        {
+          "status": "on_duty",
+          "start_hour": 10.36363636361111,
+          "end_hour": 11.36363636361111,
+          "note": "Pickup freight"
+        },
+        {
+          "status": "driving",
+          "start_hour": 11.36363636361111,
+          "end_hour": 18.0,
+          "note": "Driving"
+        },
+        {
+          "status": "off_duty",
+          "start_hour": 18.0,
+          "end_hour": 24.0,
+          "note": "10-hour off-duty rest"
+        }
+      ],
+      "totals": {
+        "off_duty": 12.0,
+        "sleeper_berth": 0,
+        "driving": 11.0,
+        "on_duty": 1.0
+      }
+    },
+    {
+      "day": 2,
+      "date": "2026-10-06",
+      "total_miles": 605.0,
+      "truck_number": "Not provided",
+      "trailer_number": "Not provided",
+      "carrier": "Not provided",
+      "from": "Dallas, TX",
+      "to": "Miami, FL",
+      "remarks": [
+        "04:00 Driving",
+        "11:10 Planned refueling (approximate route location)",
+        "11:40 Driving",
+        "15:30 10-hour off-duty rest"
+      ],
+      "segments": [
+        {
+          "status": "off_duty",
+          "start_hour": 0.0,
+          "end_hour": 4.0,
+          "note": "10-hour off-duty rest"
+        },
+        {
+          "status": "driving",
+          "start_hour": 4.0,
+          "end_hour": 11.181818181944445,
+          "note": "Driving"
+        },
+        {
+          "status": "on_duty",
+          "start_hour": 11.181818181944445,
+          "end_hour": 11.681818181944445,
+          "note": "Planned refueling (approximate route location)"
+        },
+        {
+          "status": "driving",
+          "start_hour": 11.681818181944445,
+          "end_hour": 15.5,
+          "note": "Driving"
+        },
+        {
+          "status": "off_duty",
+          "start_hour": 15.5,
+          "end_hour": 24.0,
+          "note": "10-hour off-duty rest"
+        }
+      ],
+      "totals": {
+        "off_duty": 12.5,
+        "sleeper_berth": 0,
+        "driving": 11.0,
+        "on_duty": 0.5
+      }
+    },
+    {
+      "day": 3,
+      "date": "2026-10-07",
+      "total_miles": 330.0,
+      "truck_number": "Not provided",
+      "trailer_number": "Not provided",
+      "carrier": "Not provided",
+      "from": "Dallas, TX",
+      "to": "Miami, FL",
+      "remarks": [
+        "01:30 Driving",
+        "07:30 Deliver freight"
+      ],
+      "segments": [
+        {
+          "status": "off_duty",
+          "start_hour": 0.0,
+          "end_hour": 1.5,
+          "note": "10-hour off-duty rest"
+        },
+        {
+          "status": "driving",
+          "start_hour": 1.5,
+          "end_hour": 7.5,
+          "note": "Driving"
+        },
+        {
+          "status": "on_duty",
+          "start_hour": 7.5,
+          "end_hour": 8.5,
+          "note": "Deliver freight"
+        },
+        {
+          "status": "off_duty",
+          "start_hour": 8.5,
+          "end_hour": 24.0,
+          "note": ""
+        }
+      ],
+      "totals": {
+        "off_duty": 17.0,
+        "sleeper_berth": 0,
+        "driving": 6.0,
+        "on_duty": 1.0
+      }
+    }
+  ],
+  "compliance": {
+    "compliant": true,
+    "items": [
+      {
+        "id": "c1",
+        "rule": "11-hour driving limit",
+        "detail": "Maximum 11.00 h; limit 11 h",
+        "passed": true
+      },
+      {
+        "id": "c2",
+        "rule": "14-hour driving window",
+        "detail": "Maximum 12.00 h; limit 14 h",
+        "passed": true
+      },
+      {
+        "id": "c3",
+        "rule": "Driving between qualifying interruptions",
+        "detail": "Maximum 7.18 h; limit 8 h",
+        "passed": true
+      },
+      {
+        "id": "c4",
+        "rule": "70-hour cycle while driving",
+        "detail": "Maximum 49.50 h; limit 70 h",
+        "passed": true
+      },
+      {
+        "id": "c5",
+        "rule": "Fuel at least every 1,000 miles",
+        "detail": "Maximum 1000.00 mi; limit 1000 mi",
+        "passed": true
+      },
+      {
+        "id": "c6",
+        "rule": "Rest and schedule continuity",
+        "detail": "Initial 10-hour rest assumed; only 10h off duty resets a shift and 34h resets the cycle",
+        "passed": true
+      }
+    ]
+  }
+}

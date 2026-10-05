@@ -1,5 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
-import { calculateTrip } from "@/services/api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { latestTripKey, useLatestTrip } from "@/services/latestTrip";
+import { calculateTrip, USE_MOCK } from "@/services/api";
 import { TripApiError, type TripRequest } from "@/types/trip";
 import { TripForm } from "@/components/TripForm";
 import { TripSummary } from "@/components/TripSummary";
@@ -11,7 +12,13 @@ import { ComplianceSummary } from "@/components/ComplianceSummary";
 import { EmptyState, ErrorState, LoadingState } from "@/components/States";
 
 export function TripPlanner() {
-  const mutation = useMutation({ mutationFn: (data: TripRequest) => calculateTrip(data) });
+  const queryClient = useQueryClient();
+  const latestTrip = useLatestTrip();
+  const mutation = useMutation({
+    mutationFn: (data: TripRequest) => calculateTrip(data),
+    onSuccess: (trip) => queryClient.setQueryData(latestTripKey, trip),
+  });
+  const trip = mutation.data ?? latestTrip;
   const err = mutation.error;
   const fieldErr =
     err instanceof TripApiError && err.field ? { [err.field]: err.message } : undefined;
@@ -34,16 +41,17 @@ export function TripPlanner() {
           message={err.message || "Unable to calculate trip."}
           onRetry={mutation.variables ? () => mutation.mutate(mutation.variables!) : undefined}
         />
-      ) : mutation.data ? (
+      ) : trip ? (
         <div className="space-y-6">
-          <TripSummary trip={mutation.data} />
+          <TripSummary trip={trip} />
+          {USE_MOCK && <p className="text-sm text-muted-foreground">Demo data: this is a fixed Dallas–Houston–Miami sample, not a calculation for the entered locations or cycle hours.</p>}
           <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
-            <RouteMap route={mutation.data.route} stops={mutation.data.stops} />
-            <TripTimeline events={mutation.data.events} />
+            <RouteMap route={trip.route} stops={trip.stops} />
+            <TripTimeline events={trip.events} />
           </div>
-          <PlannedStops stops={mutation.data.stops} />
-          <DriverLogs logs={mutation.data.logs} />
-          <ComplianceSummary compliance={mutation.data.compliance} />
+          <PlannedStops stops={trip.stops} />
+          <DriverLogs logs={trip.logs} />
+          <ComplianceSummary compliance={trip.compliance} />
         </div>
       ) : (
         <EmptyState />

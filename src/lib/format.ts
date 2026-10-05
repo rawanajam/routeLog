@@ -1,8 +1,9 @@
 import type { DutyStatus, StopType, TimelineKind } from "@/types/trip";
 
 export const formatHours = (h: number) => {
-  const hrs = Math.floor(h);
-  const mins = Math.round((h - hrs) * 60);
+  const totalMinutes = Math.round(h * 60);
+  const hrs = Math.floor(totalMinutes / 60);
+  const mins = totalMinutes % 60;
   if (hrs === 0) return `${mins}m`;
   return mins ? `${hrs}h ${mins}m` : `${hrs}h`;
 };
@@ -10,10 +11,11 @@ export const formatHours = (h: number) => {
 export const formatTime = (iso: string) => iso.slice(11, 16);
 
 export const formatDate = (iso: string) =>
-  new Date(iso.length === 10 ? iso + "T12:00:00" : iso).toLocaleDateString("en-US", {
+  new Date(iso.length === 10 ? iso + "T12:00:00Z" : iso).toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
     day: "numeric",
+    timeZone: "UTC",
   });
 
 export const dutyLabel: Record<DutyStatus, string> = {

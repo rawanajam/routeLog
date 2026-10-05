@@ -10,7 +10,7 @@ const legend = ["start", "pickup", "fuel", "break", "rest", "dropoff"] as const;
 export function RouteMap({ route, stops }: { route: LatLng[]; stops: TripStop[] }) {
   const fallback = <div className="route-grid h-full w-full animate-pulse bg-muted" />;
   return (
-    <section className="panel flex h-full flex-col overflow-hidden">
+    <section className="panel isolate flex h-full flex-col overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3.5">
         <h2 className="font-semibold">Route Map</h2>
         <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
@@ -22,13 +22,16 @@ export function RouteMap({ route, stops }: { route: LatLng[]; stops: TripStop[] 
           ))}
         </ul>
       </div>
-      <div className="relative h-[380px] flex-1 lg:h-auto lg:min-h-[480px]">
+      <div className="relative min-h-[380px] flex-1 lg:min-h-[480px]">
         <ClientOnly fallback={fallback}>
           <Suspense fallback={fallback}>
             <LeafletMap route={route} stops={stops} />
           </Suspense>
         </ClientOnly>
       </div>
+      <p className="border-t border-border px-5 py-2.5 text-xs text-muted-foreground">
+        Drag to explore, use + / − to zoom, and click a stop for details.
+      </p>
     </section>
   );
 }
