@@ -12,7 +12,9 @@ export default defineConfig(({ command, mode }) => {
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({ server: { entry: "server" } }),
-    ...(command === "build" ? [nitro({ preset: "node-server" })] : []),
+    ...(command === "build"
+      ? [nitro({ preset: process.env.VERCEL === "1" ? "vercel" : "node-server" })]
+      : []),
     react(),
   ],
   resolve: {
