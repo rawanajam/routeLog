@@ -5,11 +5,11 @@ import { kindIcon } from "./StatusIcon";
 export function TripTimeline({ events }: { events: TripEvent[] }) {
   let lastDay = "";
   return (
-    <section className="panel flex h-full flex-col">
-      <div className="border-b border-border px-5 py-3.5">
+    <section className="panel flex h-full min-w-0 flex-col">
+      <div className="border-b border-border px-4 py-3.5 sm:px-5">
         <h2 className="font-semibold">Trip Timeline (UTC)</h2>
       </div>
-      <ol className="max-h-[540px] flex-1 overflow-y-auto px-5 py-4">
+      <ol className="min-w-0 flex-1 px-4 py-4 sm:max-h-[540px] sm:overflow-y-auto sm:px-5">
         {events.map((e, i) => {
           const Icon = kindIcon[e.kind] ?? kindIcon.on_duty;
           const day = e.time.slice(0, 10);
@@ -28,14 +28,14 @@ export function TripTimeline({ events }: { events: TripEvent[] }) {
                   <Icon className="h-4 w-4" />
                 </span>
                 <div className="min-w-0 flex-1 pt-0.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="truncate text-sm font-medium">{e.title}</p>
-                    <span className="font-mono text-xs text-muted-foreground">{formatTime(e.time)}</span>
+                  <div className="flex items-start justify-between gap-2 sm:items-center">
+                    <p className="min-w-0 break-words text-sm font-medium sm:truncate">{e.title}</p>
+                    <span className="shrink-0 font-mono text-xs text-muted-foreground">{formatTime(e.time)}</span>
                   </div>
                   <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
                     <span className="rounded bg-secondary px-1.5 py-0.5 font-medium text-secondary-foreground">{kindLabel[e.kind] ?? "Event"}</span>
                     {e.duration_hours !== undefined && <span>{formatHours(e.duration_hours)}</span>}
-                    {e.location && <span className="truncate">· {e.location}</span>}
+                    {e.location && <span className="min-w-0 break-words sm:truncate">· {e.location}</span>}
                   </div>
                 </div>
               </div>

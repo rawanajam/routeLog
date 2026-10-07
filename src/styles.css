@@ -151,3 +151,10 @@
 .rl-pin-rest { background: var(--status-sleeper); }
 .rl-pin-dropoff { background: var(--status-dropoff); }
 .leaflet-container { font-family: var(--font-sans); }
+
+@media (max-width: 639px) {
+  /* Anchor suggestions to the complete input row, including its leading icon. */
+  .location-autocomplete { position: static; }
+  .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 44px; }
+  .leaflet-popup-content { max-width: 220px; overflow-wrap: anywhere; }
+}

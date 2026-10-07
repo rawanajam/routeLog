@@ -60,25 +60,30 @@ export function LocationAutocomplete({ id, value, onChange, placeholder, disable
   };
 
   return (
-    <div className="relative h-full min-w-0 flex-1">
+    <div className="location-autocomplete relative h-full min-w-0 flex-1">
       <input id={id} role="combobox" aria-autocomplete="list" aria-expanded={showSuggestions}
         aria-controls={`${id}-suggestions`} aria-activedescendant={active >= 0 ? `${id}-option-${active}` : undefined}
         autoComplete="off" maxLength={300} value={value.name} placeholder={placeholder} disabled={disabled}
-        className="h-full w-full min-w-0 bg-transparent text-sm outline-none placeholder:text-muted-foreground/70 disabled:opacity-60"
+        className="h-full w-full min-w-0 bg-transparent text-base outline-none placeholder:text-muted-foreground/70 disabled:opacity-60 sm:text-sm"
         onFocus={() => setOpen(true)} onBlur={() => setOpen(false)} onKeyDown={keyDown}
-        onChange={(event) => { onChange({ name: event.target.value, lat: null, lng: null }); setOpen(true); }} />
+        onChange={(event) => {
+          const name = event.target.value.replace(/[^\p{L}\p{M}\p{N} ,.'’\-]/gu, "");
+          if (name === value.name) return;
+          onChange({ name, lat: null, lng: null });
+          setOpen(true);
+        }} />
       {showSuggestions && (
-        <div className="absolute left-0 right-0 top-full z-50 mt-2 min-w-64 rounded-lg border border-border bg-card p-1 shadow-lg">
+        <div className="location-suggestions absolute left-0 right-0 top-full z-50 mt-2 min-w-0 rounded-lg border border-border bg-card p-1 shadow-lg sm:min-w-64">
           <div aria-live="polite" className="text-xs text-muted-foreground">
             {!searching ? <p className="p-2">Type at least 3 characters to search locations</p>
               : busy ? <p className="flex items-center gap-2 p-2"><Loader2 className="h-3 w-3 animate-spin" /> Searching locations…</p>
               : error ? <p className="p-2 text-destructive">{error}</p>
               : !results.length ? <p className="p-2">No locations found</p> : null}
           </div>
-          <ul id={`${id}-suggestions`} role="listbox" aria-label="Location suggestions">
+          <ul id={`${id}-suggestions`} role="listbox" aria-label="Location suggestions" className="max-h-64 overflow-y-auto overscroll-contain">
             {results.map((location, index) => (
               <li key={`${location.lat},${location.lng},${location.name}`} id={`${id}-option-${index}`} role="option"
-                aria-selected={active === index} className={`cursor-pointer rounded-md p-2 text-sm hover:bg-muted ${active === index ? "bg-muted" : ""}`}
+                aria-selected={active === index} className={`flex min-h-11 cursor-pointer items-center break-words rounded-md p-2 text-sm hover:bg-muted sm:block sm:min-h-0 ${active === index ? "bg-muted" : ""}`}
                 onPointerDown={(event) => event.preventDefault()}
                 onMouseDown={(event) => event.preventDefault()} onClick={() => select(location)}>{location.name}</li>
             ))}

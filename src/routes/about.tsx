@@ -21,13 +21,13 @@ const assumptions = [
 
 function About() {
   return (
-    <main className="mx-auto max-w-3xl space-y-6 px-4 py-10 sm:px-6">
+    <main className="mx-auto min-w-0 max-w-3xl space-y-6 px-4 py-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-10">
       <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">About RouteLog</h1>
       <p className="text-muted-foreground">
         RouteLog generates a driving route, planned stops, and daily ELD log sheets for commercial truck
         drivers. Schedules and Hours of Service compliance are calculated by the backend service.
       </p>
-      <section className="panel p-5">
+      <section className="panel p-4 sm:p-5">
         <h2 className="mb-3 font-semibold">Planning assumptions</h2>
         <ul className="space-y-2 text-sm">
           {assumptions.map((a) => (

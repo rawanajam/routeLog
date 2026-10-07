@@ -13,7 +13,7 @@ export default defineConfig(({ command, mode }) => {
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({ server: { entry: "server" } }),
     ...(command === "build"
-      ? [nitro({ preset: process.env.VERCEL === "1" ? "vercel" : "node-server" })]
+      ? [nitro({ preset: process.env['VERCEL'] === "1" ? "vercel" : "node-server" })]
       : []),
     react(),
   ],

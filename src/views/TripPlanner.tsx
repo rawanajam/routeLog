@@ -24,7 +24,7 @@ export function TripPlanner() {
     err instanceof TripApiError && err.field ? { [err.field]: err.message } : undefined;
 
   return (
-    <main className="mx-auto max-w-7xl space-y-6 px-4 py-8 sm:px-6">
+    <main className="mx-auto min-w-0 max-w-7xl space-y-6 px-4 py-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-6 sm:py-8">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Plan Your Trip</h1>
         <p className="mt-1 text-sm text-muted-foreground sm:text-base">
@@ -42,10 +42,10 @@ export function TripPlanner() {
           onRetry={mutation.variables ? () => mutation.mutate(mutation.variables!) : undefined}
         />
       ) : trip ? (
-        <div className="space-y-6">
+        <div className="min-w-0 space-y-6">
           <TripSummary trip={trip} />
           {USE_MOCK && <p className="text-sm text-muted-foreground">Demo data: this is a fixed Dallas–Houston–Miami sample, not a calculation for the entered locations or cycle hours.</p>}
-          <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
+          <div className="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
             <RouteMap route={trip.route} stops={trip.stops} />
             <TripTimeline events={trip.events} />
           </div>

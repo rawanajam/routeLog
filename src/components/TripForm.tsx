@@ -32,13 +32,13 @@ function Field({
   children: ReactNode;
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="min-w-0 space-y-1.5">
       <label htmlFor={id} className="text-sm font-medium text-foreground">
         {label}
       </label>
       <div
         className={cn(
-          "flex h-11 items-center gap-2.5 rounded-lg border bg-card px-3 transition-shadow focus-within:ring-2 focus-within:ring-ring/40",
+          "relative flex h-12 min-w-0 items-center gap-2.5 rounded-lg border bg-card px-3 transition-shadow focus-within:ring-2 focus-within:ring-ring/40 sm:static sm:h-11",
           error ? "border-destructive focus-within:ring-destructive/30" : "border-input focus-within:border-ring",
         )}
       >
@@ -47,7 +47,7 @@ function Field({
         {suffix && <span className="shrink-0 text-sm text-muted-foreground">{suffix}</span>}
       </div>
       {error ? (
-        <p className="text-xs text-destructive">{error}</p>
+        <p className="break-words text-sm text-destructive sm:text-xs">{error}</p>
       ) : helper ? (
         <p className="text-xs text-muted-foreground">{helper}</p>
       ) : null}
@@ -56,7 +56,7 @@ function Field({
 }
 
 const inputCls =
-  "h-full w-full min-w-0 bg-transparent text-sm outline-none placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:opacity-60";
+  "h-full w-full min-w-0 bg-transparent text-base outline-none placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:opacity-60 sm:text-sm";
 
 export function TripForm({ onSubmit, loading, serverErrors }: Props) {
   const [values, setValues] = useState<{ current: LocationValue; pickup: LocationValue; dropoff: LocationValue; cycle: string }>({
@@ -103,7 +103,7 @@ export function TripForm({ onSubmit, loading, serverErrors }: Props) {
   };
 
   return (
-    <form onSubmit={submit} noValidate className="panel relative z-20 p-5 sm:p-6">
+    <form onSubmit={submit} noValidate className="panel relative z-20 min-w-0 p-4 sm:p-6">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Field id="current" label="Current Location" icon={<Navigation className="h-4 w-4" />} error={locationError || all.current_location}>
           <LocationAutocomplete id="current" placeholder="Enter current location" value={values.current} onChange={(value) => setLocation("current", value)} disabled={loading || locating} />
@@ -123,17 +123,26 @@ export function TripForm({ onSubmit, loading, serverErrors }: Props) {
           helper="Hours already used in the current 70-hour cycle"
           suffix="hrs"
         >
-          <input id="cycle" type="number" min={0} max={70} step={0.25} className={inputCls} placeholder="0" value={values.cycle} onChange={(event) => setValues((v) => ({ ...v, cycle: event.target.value }))} disabled={loading} />
+          <input id="cycle" type="number" min={0} max={70} step={0.25} className={inputCls} placeholder="0" value={values.cycle}
+            onKeyDown={(event) => {
+              if (!event.ctrlKey && !event.metaKey && ["e", "E", "+", "-"].includes(event.key)) event.preventDefault();
+            }}
+            onPaste={(event) => {
+              if (!/^\d*(\.\d*)?$/.test(event.clipboardData.getData("text"))) event.preventDefault();
+            }}
+            onChange={(event) => {
+              if (/^\d*(\.\d*)?$/.test(event.target.value)) setValues((v) => ({ ...v, cycle: event.target.value }));
+            }} disabled={loading} />
         </Field>
       </div>
       <div className="mt-5 flex flex-col-reverse items-stretch gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
-        <button type="button" onClick={fillSample} disabled={loading || locating} className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground disabled:opacity-50">
+        <button type="button" onClick={fillSample} disabled={loading || locating} className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 sm:min-h-0 sm:justify-start">
           <MapPin className="h-3.5 w-3.5" /> Use sample trip
         </button>
         <button
           type="submit"
           disabled={loading || locating}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:brightness-95 active:brightness-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 sm:h-11 sm:w-auto"
         >
           {loading && <Loader2 className="h-4 w-4 animate-spin" />}
           {loading ? "Calculating…" : "Calculate Trip"}

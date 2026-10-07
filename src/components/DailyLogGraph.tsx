@@ -28,8 +28,10 @@ function buildPath(segments: LogSegment[]) {
 
 export function DailyLogGraph({ events, totals }: { events: LogSegment[]; totals: Record<DutyStatus, number> }) {
   return (
-    <div className="overflow-x-auto">
-      <svg viewBox={`0 0 ${W} ${H}`} className="w-full min-w-[680px]" role="img" aria-label="24-hour duty status graph">
+    <div className="min-w-0 max-w-full">
+      <p className="mb-2 text-xs text-muted-foreground sm:hidden">Swipe the graph to see all 24 hours.</p>
+      <div tabIndex={0} role="region" aria-label="Scrollable 24-hour duty status graph" className="max-w-full overflow-x-auto overscroll-x-contain scroll-smooth rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full min-w-[1000px] sm:min-w-[680px]" role="img" aria-label="24-hour duty status graph">
         {/* hour labels */}
         {Array.from({ length: 25 }, (_, h) => (
           <text key={h} x={x(h)} y={16} textAnchor="middle" className="fill-muted-foreground font-mono" fontSize={10}>
@@ -65,6 +67,7 @@ export function DailyLogGraph({ events, totals }: { events: LogSegment[]; totals
         <rect x={LEFT} y={TOP} width={GRID_W} height={ROW_H * 4} fill="none" className="stroke-input" />
         <path d={buildPath(events)} fill="none" className="stroke-primary" strokeWidth={2.75} strokeLinejoin="round" strokeLinecap="round" />
       </svg>
+      </div>
     </div>
   );
 }

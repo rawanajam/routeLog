@@ -14,10 +14,10 @@ export function DriverLogs({ logs }: { logs: DailyLog[] }) {
   const total = ORDER.reduce((s, k) => s + log.totals[k], 0);
 
   return (
-    <section className="panel">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-3.5">
+    <section className="panel min-w-0">
+      <div className="flex min-w-0 flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3.5 sm:px-5">
         <h2 className="font-semibold">Driver Daily Logs (UTC)</h2>
-        <div role="tablist" className="inline-flex rounded-lg bg-secondary p-1">
+        <div role="tablist" aria-label="Driver log day" className="inline-flex max-w-full flex-wrap gap-1 rounded-lg bg-secondary p-1 sm:gap-0">
           {logs.map((l, i) => (
             <button
               key={l.day}
@@ -25,7 +25,7 @@ export function DriverLogs({ logs }: { logs: DailyLog[] }) {
               aria-selected={i === selected}
               onClick={() => setActive(i)}
               className={cn(
-                "rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors",
+                "min-h-11 rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-h-0",
                 i === selected ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground",
               )}
             >
@@ -35,11 +35,11 @@ export function DriverLogs({ logs }: { logs: DailyLog[] }) {
         </div>
       </div>
 
-      <div className="space-y-5 p-5">
+      <div className="min-w-0 space-y-5 p-4 sm:p-5">
         <DailyLogGraph events={log.segments} totals={log.totals} />
 
-        <div className="grid gap-5 lg:grid-cols-[2fr_1fr]">
-          <dl className="grid grid-cols-2 gap-x-6 gap-y-3 rounded-lg border border-border p-4 text-sm sm:grid-cols-3">
+        <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <dl className="grid min-w-0 grid-cols-2 gap-x-3 gap-y-3 rounded-lg border border-border p-4 text-sm sm:grid-cols-3 sm:gap-x-6">
             {[
               ["Date", formatDate(log.date)],
               ["Total Miles", `${log.total_miles.toLocaleString()} mi`],
@@ -50,12 +50,12 @@ export function DriverLogs({ logs }: { logs: DailyLog[] }) {
             ].map(([k, v]) => (
               <div key={k} className="min-w-0">
                 <dt className="text-xs text-muted-foreground">{k}</dt>
-                <dd className="truncate font-medium">{v}</dd>
+                <dd className="break-words font-medium sm:truncate">{v}</dd>
               </div>
             ))}
             <div className="col-span-full">
               <dt className="text-xs text-muted-foreground">Remarks</dt>
-              <dd>
+              <dd className="break-words">
                 <ul className="mt-1 space-y-0.5 font-mono text-xs">
                   {log.remarks.map((r) => (
                     <li key={r}>{r}</li>

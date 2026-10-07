@@ -40,7 +40,7 @@ export function CurrentLocationButton({ disabled, onLocation, onError, onBusyCha
   };
   return <button type="button" onClick={locate} disabled={disabled || busy} title="Use my current location"
     aria-label={busy ? "Finding your current location" : "Use my current location"}
-    className="shrink-0 rounded p-1 text-muted-foreground hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
+    className="-mr-2 grid h-11 w-11 shrink-0 place-items-center rounded-lg text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 sm:mr-0 sm:h-auto sm:w-auto sm:p-1">
     {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <LocateFixed className="h-4 w-4" />}
   </button>;
 }

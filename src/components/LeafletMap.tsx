@@ -35,7 +35,7 @@ function RouteViewport({ points }: { points: LatLng[] }) {
       type="button"
       onClick={() => bounds.isValid() && map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 })}
       onDoubleClick={(event) => event.stopPropagation()}
-      className="absolute right-3 top-3 z-[500] rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm hover:bg-secondary"
+      className="absolute right-3 top-3 z-[500] min-h-11 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground shadow-sm hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring sm:min-h-0"
     >
       Fit route
     </button>
